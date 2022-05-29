@@ -37,19 +37,40 @@ const knobContainer = Content.getAllComponents('arc');
 // individual panels
 const var mainPanel = Content.getComponent("panel-main");
 const var pnlBackground = Content.getComponent("background");
+const var largeLogoPanel = Content.getComponent("largeLogo");
 
 // style individual panels
 pnlBackground.setPaintRoutine(function(g){g.fillAll(Theme['background']);});
 mainPanel.setPaintRoutine(function(g){g.fillAll(Theme['mainPanel']);});
+largeLogoPanel.setPaintRoutine(function(g){
+	    g.setColour(Theme['panel']);
+		g.fillPath(largeLogo, area);
+});
 
 // path for drop shadow
-const circularShadow = [110,109,0,0,150,66,0,0,22,66,98,0,0,150,66,10,215,104,66,10,215,104,66,0,0,150,66,0,0,22,66,0,0,150,66,98,236,81,134,65,0,0,150,66,0,0,0,0,10,215,104,66,0,0,0,0,0,0,22,66,98,0,0,0,0,236,81,134,65,236,81,134,65,0,0,0,0,0,0,22,66,0,0,0,0,98,10,215,104,66,0,0,0,0,0,0,150,66,236,81,134,65,0,0,150,66,0,0,22,66,99,101,0,0];
 const var knobShadow = Content.createPath();
 knobShadow.loadFromData(circularShadow);
 
-const var logo = Content.createPath();
-logo.loadFromData(logoPath);
+const var largeLogo = Content.createPath();
+largeLogo.loadFromData(logoPath);
 
+const var logo = Content.createPath();
+logo.loadFromData(logoSmallPath);
+
+const var rightButton = Content.createPath();
+rightButton.loadFromData(rightArrowPath);
+
+const var leftButton = Content.createPath();
+leftButton.loadFromData(leftArrowPath);
+
+const var character = Content.createPath();
+character.loadFromData(characterPath);
+
+const var highCut = Content.createPath();
+highCut.loadFromData(highCutPath);
+
+const var lowCut = Content.createPath();
+lowCut.loadFromData(lowCutPath);
 // repaint all panels and labels to respect new colors
 function repaint() {	
 	mainPanel.repaintImmediately();
@@ -100,8 +121,9 @@ for (k in knobContainer) {
 	});
 }
 
-laf.registerFunction('drawToggleButton', function(g, obj) {
-	
+
+
+laf.registerFunction('drawToggleButton', function(g, obj) {	
 	var a = obj.area;
 	if (obj.text.indexOf('icon') != -1) {
 		Console.print(obj.text);

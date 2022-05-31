@@ -4,6 +4,7 @@ const lightTheme = {
 	'theme': 'light',
 	'background': '0xE0DBDA',
 	'text': 4280032284,
+	'textDark': 4293125091,
 	'knobSecondary': '0x5A5857',
 	'knobPrimary': '0xC5C3C0',
 	'knobBorder': '0xB5B5B5',
@@ -16,6 +17,7 @@ const darkTheme = {
 	'theme': 'darkTheme',
 	'background': '0x323232',
 	'text': 4293125091,
+	'textLight': 4280032284,
 	'knobSecondary': '0x969696',
 	'knobPrimary': '0x2D2D2D',
 	'knobBorder': '0x333333',
@@ -47,30 +49,6 @@ largeLogoPanel.setPaintRoutine(function(g){
 		g.fillPath(largeLogo, area);
 });
 
-// path for drop shadow
-const var knobShadow = Content.createPath();
-knobShadow.loadFromData(circularShadow);
-
-const var largeLogo = Content.createPath();
-largeLogo.loadFromData(logoPath);
-
-const var logo = Content.createPath();
-logo.loadFromData(logoSmallPath);
-
-const var rightButton = Content.createPath();
-rightButton.loadFromData(rightArrowPath);
-
-const var leftButton = Content.createPath();
-leftButton.loadFromData(leftArrowPath);
-
-const var character = Content.createPath();
-character.loadFromData(characterPath);
-
-const var highCut = Content.createPath();
-highCut.loadFromData(highCutPath);
-
-const var lowCut = Content.createPath();
-lowCut.loadFromData(lowCutPath);
 // repaint all panels and labels to respect new colors
 function repaint() {	
 	mainPanel.repaintImmediately();
@@ -125,12 +103,20 @@ for (k in knobContainer) {
 
 laf.registerFunction('drawToggleButton', function(g, obj) {	
 	var a = obj.area;
+	
 	if (obj.text.indexOf('icon') != -1) {
-		Console.print(obj.text);
+		var icon = obj.text.replace('icon-');
 		g.setColour(Theme['text']);
-		g.fillPath(logo, area);
+		g.fillPath(Paths.icons[icon], area);
+	} else if (obj.text.indexOf("label-") != -1) {
+		var text = obj.text.replace("label-");
+		g.setColour(Theme['text']);
+		g.drawAlignedText(text, a, "left");
+	} else if (obj.text.replace("text") != -1) {
+		var text = obj.text.replace("text-");
+		g.setColour(Theme['textDark']);
+		g.drawAlignedText(text, a, 'centred');
 	}
-
 });
 	
 

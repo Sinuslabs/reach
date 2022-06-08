@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ProjectSettings>
-  <Name value="test"/>
+  <Name value="Reach"/>
   <Version value="1.0.0"/>
   <Description value=""/>
-  <BundleIdentifier value="com.myCompany.product"/>
+  <BundleIdentifier value="com.sinulsabs.reach"/>
   <PluginCode value="Abcd"/>
   <EmbedAudioFiles value="Yes"/>
   <EmbedImageFiles value="Yes"/>
@@ -26,4 +26,6 @@
   <ExpansionType value="Disabled"/>
   <EncryptionKey value=""/>
   <LinkExpansionsToProject value="No"/>
+  <EnableSoundGeneratorsFX value="No"/>
+  <ReadOnlyFactoryPresets value="No"/>
 </ProjectSettings>

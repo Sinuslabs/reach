@@ -4,7 +4,7 @@ const lightTheme = {
 	'theme': 'light',
 	'background': '0xE0DBDA',
 	'text': 4280032284,
-	'textDark': 4293125091,
+	'invertedText': 4293125091,
 	'knobSecondary': '0x5A5857',
 	'knobPrimary': '0xC5C3C0',
 	'knobBorder': '0xB5B5B5',
@@ -17,7 +17,7 @@ const darkTheme = {
 	'theme': 'darkTheme',
 	'background': '0x323232',
 	'text': 4293125091,
-	'textLight': 4280032284,
+	'invertedText': 4280032284,
 	'knobSecondary': '0x969696',
 	'knobPrimary': '0x2D2D2D',
 	'knobBorder': '0x333333',
@@ -114,7 +114,7 @@ laf.registerFunction('drawToggleButton', function(g, obj) {
 		g.drawAlignedText(text, a, "left");
 	} else if (obj.text.replace("text") != -1) {
 		var text = obj.text.replace("text-");
-		g.setColour(Theme['textDark']);
+		g.setColour(Theme['invertedText']);
 		g.drawAlignedText(text, a, 'centred');
 	}
 });
